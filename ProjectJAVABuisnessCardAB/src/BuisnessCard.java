@@ -51,7 +51,7 @@ public class BuisnessCard {
         this.City = "Krakow";
     }
 
-    public String GenerateCard()
+  /*  public String GenerateCard()
     {
         String PrintCard = "";
         String SizeLign1 = this.FirstName + " " + this.LastName;
@@ -114,7 +114,7 @@ public class BuisnessCard {
         return PrintCard;
 
 
-    }
+    } */
 
 
 public boolean Equals(BuisnessCard Bc)
@@ -126,9 +126,70 @@ public boolean Equals(BuisnessCard Bc)
 }
 
     public String toString() {
-        return this.FirstName + " " + this.LastName + "\n" + "phone : " + this.Phone + "   " + "city : " + this.City + "\n";
+        return GenerateStars() + "\n* " + this.FirstName + " " + this.LastName + GenerateSpace(1) + "*\n* " +
+            "phone : " + this.Phone + " " + "city : " + this.City + GenerateSpace(2) + "*\n" + GenerateStars();
 
     }
+
+    public String GenerateSpace(int numLine) {
+        String spaces = "";
+        String SizeLign1 = this.FirstName + " " + this.LastName;
+        String SizeLign2 = "phone : " + this.Phone + " city : " + this.City;
+
+        if(numLine==1) {
+            if(SizeLign2.length()>SizeLign1.length())
+            {
+                for(int cpt = SizeLign1.length(); cpt<SizeLign2.length();cpt++)
+                {
+                    spaces += " ";
+                }
+                return spaces + " ";
+            }
+            else {
+                return " ";
+            }
+        }
+        if(numLine==2) {
+            if(SizeLign1.length()>SizeLign2.length())
+            {
+                for(int cpt = SizeLign2.length(); cpt<SizeLign1.length();cpt++)
+                {
+                    spaces += " ";
+                }
+                return spaces;
+            }
+            else {
+                return " ";
+            }
+        }
+        else
+            return "";
+
+    }
+
+
+    public String GenerateStars(){
+        String stars = "";
+        String SizeLign1 = this.FirstName + " " + this.LastName;
+        String SizeLign2 = "Phone : " + this.Phone + " city : " + this.City;
+
+        if(SizeLign2.length()>SizeLign1.length()) {
+            for(int cpt =0; cpt < (SizeLign2.length()+4);cpt++)
+            {
+                stars += "*";
+            }
+            return stars;
+        }
+        else {
+            for(int cpt = 0; cpt < (SizeLign1.length() +4); cpt++)
+            {
+                stars += "*";
+            }
+            return stars;
+        }
+    }
+
+
 
 }
 
